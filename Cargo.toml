@@ -9,8 +9,9 @@ exclude = [
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ic-cdk = "0.3.1"
-ic-cdk-macros = "0.3.1"
-serde = { version="1.0.130", features = ["derive"] }
-serde_bytes = "0.11.5"
-futures = "0.3.17"
+ic-cdk = "0.3"
+ic-cdk-macros = "0.3"
+reqwest = "0.11.4"
+serde = "1.0.111"
+hyper = "0.10.15"
+ic-kit = "0.4.2"
