@@ -14,9 +14,9 @@ use ic_cdk_macros::*;
 use ic_cdk_macros::*;
 
 #[inline(always)]
-pub async  fn createTransaction(id: Principal, method: &str) {
+pub async  fn createTransaction(id: ic_cdk::export::Principal, method: &str){
     ic_cdk::print(ic_cdk::caller().to_text());
-    let p = Principal::from_text("rrkah-fqaaa-aaaaa-aaaaq-cai").unwrap();
+    let p = ic_cdk::export::Principal::from_text("rrkah-fqaaa-aaaaa-aaaaq-cai").unwrap();
     ic_cdk::call::<(), ()>(p, "storage",  ()).await;
 }
 
