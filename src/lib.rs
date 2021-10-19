@@ -13,8 +13,8 @@ use ic_cdk_macros::*;
 
 use ic_cdk_macros::*;
 #[update]
-pub async  fn createTransaction<T:ArgumentEncoder>(id: Principal, method: &str, args: T) {
+pub async  fn createTransaction(id: Principal, method: &str) {
     ic_cdk::print(ic_cdk::caller().to_text());
-    ic_cdk::call::<T,()>(id,method,args).await;
+    ic_cdk::call::<(),()>(id,method,()).await;
 }
 
