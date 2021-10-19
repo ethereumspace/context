@@ -9,7 +9,12 @@ use ic_cdk;
 use ic_cdk::export::{Principal};
 use ic_cdk::export::candid;
 use candid::utils::{ArgumentDecoder, ArgumentEncoder};
+use ic_cdk_macros::*;
+
+use ic_cdk_macros::*;
+#[update]
 pub async  fn createTransaction<T:ArgumentEncoder>(id: Principal, method: &str, args: T) {
     ic_cdk::print(ic_cdk::caller().to_text());
     ic_cdk::call::<T,()>(id,method,args).await;
 }
+
