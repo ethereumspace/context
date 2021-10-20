@@ -7,14 +7,12 @@ use metadata::{ Metadata};
 use eventerr::{ EventErr};
 use ic_cdk::{id,api::{stable, time,canister_balance},caller,print};
 use ic_cdk::api::call::{ CallResult};
-#[macro_use] 
-use stdext::function_name;
+
 
 #[inline(always)]
 pub async fn emit() -> () {
     // let name = ic_cdk::api::call::method_name();
     // print(name);
-    let method_name = format!("{}",function_name!());
     print(method_name);
     let canister = id();
     let caller = caller();
