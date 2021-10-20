@@ -26,5 +26,8 @@ impl  Metadata {
             stable_size: stable_size,
         }
     }
+    pub fn get_canister(&self) -> &String{
+         &self.canister
+    }
 }
 
