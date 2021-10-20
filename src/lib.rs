@@ -1,5 +1,6 @@
 pub mod metadata;
 pub mod eventerr;
+pub mod util;
 use metadata::{ Metadata};
 use eventerr::{ EventErr};
 use ic_cdk::{id,api::{stable, time},caller, print,export::Principal};
