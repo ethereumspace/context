@@ -376,6 +376,7 @@ dependencies = [
  "ic-kit",
  "reqwest",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
