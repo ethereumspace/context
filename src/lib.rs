@@ -1,17 +1,8 @@
 pub mod metadata;
 pub mod eventerr;
-use metadata::{
-    Metadata,
-};
-use eventerr::{
-    EventErr
-};
-use ic_cdk::{
-    id,
-    api::{stable, time},
-    caller, print,
-    export::Principal
-};
+use metadata::{ Metadata};
+use eventerr::{ EventErr};
+use ic_cdk::{id,api::{stable, time},caller, print,export::Principal};
 
 pub mod generate {
     use super::EventErr;
@@ -27,7 +18,7 @@ pub mod generate {
     }
 }
 
-async fn emit() -> () {
+pub async fn emit() -> () {
     // let canister = id();
     // let caller = caller();
     // let transaction_time = time();
