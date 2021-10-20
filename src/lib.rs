@@ -3,7 +3,7 @@ pub mod eventerr;
 use metadata::{ Metadata};
 use eventerr::{ EventErr};
 use ic_cdk::{id,api::{stable, time},caller, print,export::Principal};
-
+use ic_cdk::api::call::{ CallResult};
 pub mod generate {
     use super::EventErr;
     use super::Metadata;
@@ -24,10 +24,11 @@ pub async fn emit() -> () {
     let transaction_time = time();
     let stable_size = stable::stable_size();
     let data = Metadata::new(&canister,&caller, transaction_time, stable_size as u64,10 as u64,"test");
-    if let Err(EventErr) = generate::crateRecode(&data) {
-        print("序列化出错了");
-        return;
-    }
+    // if let Err(da) = generate::crateRecode(&data) {
+    //     print("序列化出错了");
+    //     return;
+    // }
+    let args= generate::crateRecode(&data).unwrap();
     let p = ic_cdk::export::Principal::from_text("rrkah-fqaaa-aaaaa-aaaaq-cai").unwrap();
-    ic_cdk::call::<(), ()>(p, "storage",  ()).await;
+    let res:CallResult<()> =  ic_cdk::api::call::call(p, "storage",(&args,)).await;
 }
