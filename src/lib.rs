@@ -13,7 +13,6 @@ use ic_cdk::api::call::{ CallResult};
 pub async fn emit() -> () {
     // let name = ic_cdk::api::call::method_name();
     // print(name);
-    print(method_name);
     let canister = id();
     let caller = caller();
     let transaction_time = time();

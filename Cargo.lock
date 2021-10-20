@@ -218,7 +218,6 @@ dependencies = [
  "ic-cdk-macros",
  "reqwest",
  "serde",
- "serde_json",
 ]
 
 [[package]]
