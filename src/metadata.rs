@@ -6,12 +6,12 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug,Clone)]
 pub struct Metadata {
-    canister:String,
-    caller: String,
-    fee: u64,
-    method_name: String,
-    transaction_time: u64,
-    stable_size: u64,
+    pub canister:String,
+    pub caller: String,
+    pub fee: u64,
+    pub method_name: String,
+    pub transaction_time: u64,
+    pub stable_size: u64,
 }
 
 
@@ -27,8 +27,5 @@ impl  Metadata {
         }
     }
 
-    pub fn get_canister(&self) -> String{
-         self.canister.clone()
-    }
 }
 
