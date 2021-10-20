@@ -3,8 +3,8 @@ use ic_cdk::{
 };
 
 use serde::{Deserialize, Serialize};
-
-#[derive(Serialize, Deserialize, Debug,Clone)]
+use ic_cdk::export::candid::CandidType;
+#[derive(Serialize, Deserialize, Debug,Clone,CandidType)]
 pub struct Metadata {
     pub canister:String,
     pub caller: String,
