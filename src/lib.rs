@@ -29,3 +29,17 @@ pub async fn emit() -> () {
     let p = ic_cdk::export::Principal::from_text("rrkah-fqaaa-aaaaa-aaaaq-cai").unwrap();
     let res:CallResult<()> =  ic_cdk::api::call::call(p, "storage",(&args,)).await;
 }
+
+
+#[cfg(test)]
+mod mock{
+    use std::collections::BTreeMap;
+    #[test]
+    pub fn demo(){
+        let mut bt: BTreeMap::<u32,Vec<u32>>  = BTreeMap::new();
+        bt.insert(1,vec![1,2]);
+        bt.get_mut(&1).unwrap().push(3);
+        let res = bt.get(&1).unwrap();
+        println!("{:?}",res);
+    }
+}

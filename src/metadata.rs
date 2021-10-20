@@ -4,7 +4,7 @@ use ic_cdk::{
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug,Clone)]
 pub struct Metadata {
     canister:String,
     caller: String,
@@ -26,7 +26,7 @@ impl  Metadata {
             stable_size: stable_size,
         }
     }
-    
+
     pub fn get_canister(&self) -> &String{
          &self.canister
     }
