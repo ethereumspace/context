@@ -36,10 +36,17 @@ mod mock{
     use std::collections::BTreeMap;
     #[test]
     pub fn demo(){
-        let mut bt: BTreeMap::<u32,Vec<u32>>  = BTreeMap::new();
-        bt.insert(1,vec![1,2]);
-        bt.get_mut(&1).unwrap().push(3);
-        let res = bt.get(&1).unwrap();
+        let mut bt: BTreeMap::<String,Vec<u32>>  = BTreeMap::new();
+        let name =String::from("000");
+        // bt.insert(name,vec![1,2]);
+        // bt.get_mut(&name).unwrap().push(3);
+        // let res = bt.get(&name).unwrap();
+        // println!("{:?}",res);
+        println!("{}",!bt.contains_key(&name) );
+        bt.entry(name.clone()).or_insert(vec![1,2,3,5]);
+        let res = bt.get(&name).unwrap();
         println!("{:?}",res);
+
+        println!("{}",!bt.contains_key(&name) );
     }
 }

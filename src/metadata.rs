@@ -27,8 +27,8 @@ impl  Metadata {
         }
     }
 
-    pub fn get_canister(&self) -> &String{
-         &self.canister
+    pub fn get_canister(&self) -> String{
+         self.canister.clone()
     }
 }
 
