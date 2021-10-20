@@ -9,8 +9,8 @@ pub mod generate {
     use super::Metadata;
     use std::result::Result;
 
-    pub fn crateRecode(data: &Metadata) -> Result<Vec<u8>, EventErr> {
-        let serial = serde_json::to_vec(data).unwrap();
+    pub fn crateRecode(data: &Metadata) -> Result<String, EventErr> {
+        let serial = serde_json::to_string(data).unwrap();
         if serial.len() == 0 {
             return Err(EventErr::SerializeFail);
         }
