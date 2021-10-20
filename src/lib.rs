@@ -9,6 +9,8 @@ use ic_cdk::{id,api::{stable, time,canister_balance},caller,print};
 use ic_cdk::api::call::{ CallResult};
 #[macro_use] 
 use stdext::function_name;
+
+#[inline(always)]
 pub async fn emit() -> () {
     // let name = ic_cdk::api::call::method_name();
     // print(name);
