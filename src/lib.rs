@@ -19,14 +19,15 @@ pub mod generate {
 }
 
 pub async fn emit() -> () {
-    // let canister = id();
-    // let caller = caller();
-    // let transaction_time = time();
-    // let stable_size = stable::stable_size();
-    // let data = Metadata::new(&canister,&caller, transaction_time, stable_size as u64,10 as u64,"test");
-    // if let Err(EventErr) = generate::crateRecode(&data) {
-    //     print("序列化出错了")
-    // }
+    let canister = id();
+    let caller = caller();
+    let transaction_time = time();
+    let stable_size = stable::stable_size();
+    let data = Metadata::new(&canister,&caller, transaction_time, stable_size as u64,10 as u64,"test");
+    if let Err(EventErr) = generate::crateRecode(&data) {
+        print("序列化出错了");
+        return;
+    }
     let p = ic_cdk::export::Principal::from_text("rrkah-fqaaa-aaaaa-aaaaq-cai").unwrap();
     ic_cdk::call::<(), ()>(p, "storage",  ()).await;
 }
