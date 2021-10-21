@@ -11,7 +11,6 @@ pub struct Metadata {
     pub stable_size: Nat,
 }
 
-
 impl  Metadata {
     pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,fee:Nat,method_name:&str) -> Metadata {
         Metadata {
@@ -25,4 +24,5 @@ impl  Metadata {
     }
 
 }
+
 
