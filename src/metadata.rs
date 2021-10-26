@@ -57,3 +57,8 @@ pub struct CanisterStatusResponse {
     pub memory_size: Nat,
     pub cycles: Nat,
 }
+
+#[derive(CandidType, Clone, Deserialize, Debug)]
+pub struct CanisterIdRecord {
+    pub canister_id: Principal,
+}
