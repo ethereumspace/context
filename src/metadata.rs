@@ -11,6 +11,7 @@ pub struct Metadata {
     pub stable_size: Nat,
 }
 
+
 impl  Metadata {
     pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,fee:Nat,method_name:&str) -> Metadata {
         Metadata {
@@ -26,3 +27,33 @@ impl  Metadata {
 }
 
 
+#[allow(non_camel_case_types)]
+#[derive(CandidType, Debug, Deserialize)]
+pub enum CanisterStatus {
+    #[serde(rename = "running")]
+    Running,
+    #[serde(rename = "stopping")]
+    Stopping,
+    #[serde(rename = "stopped")]
+    Stopped,
+}
+
+
+
+#[derive(CandidType, Debug, Clone, Deserialize)]
+pub struct CanisterSettings {
+    pub controllers: Option<Vec<Principal>>,
+    pub compute_allocation: Option<Nat>,
+    pub memory_allocation: Option<Nat>,
+    pub freezing_threshold: Option<Nat>,
+}
+
+#[derive(CandidType, Debug, Deserialize)]
+pub struct CanisterStatusResponse {
+    pub status: CanisterStatus,
+    pub settings: CanisterSettings,
+    pub module_hash: Option<Vec<u8>>,
+    pub controller: Principal,
+    pub memory_size: Nat,
+    pub cycles: Nat,
+}

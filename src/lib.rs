@@ -3,17 +3,26 @@ pub mod eventerr;
 pub mod util;
 mod config;
 use config::{CREATETRANSACTION,STORAGECANISTER};
-use metadata::{ Metadata};
+use metadata::{ Metadata,CanisterStatusResponse};
 use eventerr::{ EventErr};
 use ic_cdk::export::Principal;
-use ic_cdk::{id,api::{stable, time,canister_balance},caller,print};
+use ic_cdk::{id,api,api::{stable, time,canister_balance},caller,print};
 use ic_cdk::api::call::{ CallResult};
-
 
 #[inline(always)]
 pub async fn emit() -> () {
-    // let name = ic_cdk::api::call::method_name();
+    // let name = ic_cdk::api::call::method_name(); 
+
     let canister = id();
+    let res: Result<(CanisterStatusResponse,), _> = api::call::call(
+        Principal::management_canister(),
+        "canister_status",
+        (canister,),
+    )
+    .await;
+    let show = format!("{:?}",res);
+    
+    print(show);
     let caller = caller();
     let transaction_time = time();
     let fee = canister_balance();
