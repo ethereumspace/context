@@ -62,3 +62,23 @@ pub struct CanisterStatusResponse {
 pub struct CanisterIdRecord {
     pub canister_id: Principal,
 }
+
+#[derive(CandidType, Deserialize)]
+pub enum InstallMode {
+    #[serde(rename = "install")]
+    Install,
+    #[serde(rename = "reinstall")]
+    Reinstall,
+    #[serde(rename = "upgrade")]
+    Upgrade,
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct CanisterInstall {
+    mode: InstallMode,
+    canister_id: Principal,
+    #[serde(with = "serde_bytes")]
+    wasm_module: Vec<u8>,
+    #[serde(with = "serde_bytes")]
+    arg: Vec<u8>,
+}
