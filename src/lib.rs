@@ -20,7 +20,7 @@ pub async fn emit() -> () {
         (canister,),
     )
     .await;
-    let show = format!("{:?}",res);
+    let show = format!("{:?}",res.unwrap());
     
     print(show);
     let caller = caller();
