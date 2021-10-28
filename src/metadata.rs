@@ -4,8 +4,8 @@ use ic_cdk::export::candid::CandidType;
 
 #[derive( Deserialize, Debug,Clone,CandidType)]
 pub struct Metadata {
-    pub canister:String,
-    pub caller: String,
+    pub canister:Principal,
+    pub caller: Principal,
     pub cycle: Nat,
     pub method_name: String,
     pub transaction_time: Nat,
@@ -16,8 +16,8 @@ pub struct Metadata {
 impl Metadata {
     pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,cycle:Nat,method_name:&str) -> Metadata {
         Metadata {
-            canister:canister.to_text(),
-            caller: caller.to_text(),
+            canister:canister.clone(),
+            caller: caller.clone(),
             cycle: cycle,
             method_name: method_name.to_string(),
             transaction_time: transaction_time,
