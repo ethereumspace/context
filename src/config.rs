@@ -1,2 +1,2 @@
-pub static STORAGECANISTER:&str  = "r7inp-6aaaa-aaaaa-aaabq-cai";
+pub static STORAGECANISTER:&str  = "ryjl3-tyaaa-aaaaa-aaaba-cai";
 pub static CREATETRANSACTION:&str = "createEvent";
