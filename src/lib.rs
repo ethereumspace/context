@@ -14,7 +14,7 @@ use ic_cdk::api::call::{ CallResult};
 #[inline(always)]
 pub async fn emit(remarks: &str) -> CallResult<()>{
     let method_name  = ic_cdk::api::call::method_name();
-    print("*ddddddd")
+    print("*ddddddd");
     let canister_id = id();
     let caller_id = caller();
     let event_time = time();
@@ -28,7 +28,7 @@ pub async fn emit(remarks: &str) -> CallResult<()>{
         },
         Err(err) =>{
             print("*ddddddd3");
-          return  Err((202.into(),err.to_string()))
+          return  Err((500.into(),err.to_string()))
         }
     } 
 }
