@@ -13,7 +13,6 @@ use ic_cdk::api::call::{ CallResult};
 
 #[inline(always)]
 pub async fn emit(remarks: &str) -> CallResult<()>{
-    ic_cdk::api::call::accept_message();
     let method_name  = ic_cdk::api::call::method_name();
     ic_cdk::print(&method_name);
     ic_cdk::print("hello world2");
