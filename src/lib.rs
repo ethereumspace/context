@@ -11,7 +11,6 @@ use ic_cdk::{id,api::{stable, time,canister_balance},caller,print};
 use ic_cdk::api::call::{ CallResult};
 
 
-#[inline(always)]
 pub async fn emit(remarks: &str) -> CallResult<()>{
     let method_name  = ic_cdk::api::call::method_name();
     print("*ddddddd");
@@ -30,6 +29,6 @@ pub async fn emit(remarks: &str) -> CallResult<()>{
             print("*ddddddd3");
             Err((500.into(),err.to_string()))
         }
-    } 
+    }
 }
 
