@@ -23,7 +23,7 @@ pub async fn emit(remarks: &str) -> CallResult<()>{
     let new_metadata = Metadata::new(&canister_id,&caller_id, event_time.into(), stable_size.into(),cycle.into(),&method_name);
     match Principal::from_text(EVENTCANISTER) {
         Ok(event_canister_id) => {
-            print("*ddddddd2");
+            print(&event_canister_id.to_text());
             return ic_cdk::api::call::call(event_canister_id,CREATETRANSACTION,(&new_metadata,)).await;
         },
         Err(err) =>{

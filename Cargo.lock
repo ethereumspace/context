@@ -219,6 +219,7 @@ dependencies = [
  "reqwest",
  "serde",
  "serde_bytes",
+ "serde_json",
 ]
 
 [[package]]
