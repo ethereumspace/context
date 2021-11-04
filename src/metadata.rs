@@ -14,8 +14,8 @@ pub struct Metadata {
 
 
 impl Metadata {
-    pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,cycle:Nat,method_name:&str) -> Metadata {
-        Metadata {
+    pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,cycle:Nat,method_name:&str) -> Self {
+        Self {
             canister:canister.clone(),
             caller: caller.clone(),
             cycle: cycle,
