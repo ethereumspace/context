@@ -1,10 +1,10 @@
-use ic_cdk::{export::Principal};
-use ic_cdk::export::candid::{Deserialize,Nat};
 use ic_cdk::export::candid::CandidType;
+use ic_cdk::export::candid::{Deserialize, Nat};
+use ic_cdk::export::Principal;
 
-#[derive( Deserialize, Debug,Clone,CandidType)]
+#[derive(Deserialize, Debug, Clone, CandidType)]
 pub struct Metadata {
-    pub canister:Principal,
+    pub canister: Principal,
     pub caller: Principal,
     pub cycle: Nat,
     pub method_name: String,
@@ -13,21 +13,27 @@ pub struct Metadata {
     pub memo: String,
 }
 
-
 impl Metadata {
-    pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,cycle:Nat,method_name:&str,memo:&str) -> Self {
+    pub fn new(
+        canister: &Principal,
+        caller: &Principal,
+        transaction_time: Nat,
+        stable_size: Nat,
+        cycle: Nat,
+        method_name: &str,
+        memo: &str,
+    ) -> Self {
         Self {
-            canister:canister.clone(),
+            canister: canister.clone(),
             caller: caller.clone(),
             cycle: cycle,
             method_name: method_name.to_string(),
             transaction_time: transaction_time,
             stable_size: stable_size,
-            memo:memo.to_string()
+            memo: memo.to_string(),
         }
     }
 }
-
 
 #[allow(non_camel_case_types)]
 #[derive(CandidType, Debug, Deserialize)]
@@ -39,8 +45,6 @@ pub enum CanisterStatus {
     #[serde(rename = "stopped")]
     Stopped,
 }
-
-
 
 #[derive(CandidType, Debug, Clone, Deserialize)]
 pub struct CanisterSettings {
@@ -68,16 +72,16 @@ pub struct CanisterIdRecord {
 #[derive(CandidType, Deserialize)]
 pub enum InstallMode {
     #[serde(rename = "install")]
-     Install,
+    Install,
     #[serde(rename = "reinstall")]
-     Reinstall,
+    Reinstall,
     #[serde(rename = "upgrade")]
     Upgrade,
 }
 
 #[derive(CandidType, Deserialize)]
 pub struct CanisterInstall {
-    pub  mode: InstallMode,
+    pub mode: InstallMode,
     pub canister_id: Principal,
     #[serde(with = "serde_bytes")]
     pub wasm_module: Vec<u8>,

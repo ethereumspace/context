@@ -13,7 +13,6 @@ pub fn Event(input: TokenStream) -> TokenStream {
     let ast = syn::parse(input).unwrap();
     impl_event_macro(&ast)
 }
-
 fn impl_event_macro(ast: &syn::DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let gen = quote! {
