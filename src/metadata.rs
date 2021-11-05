@@ -10,11 +10,12 @@ pub struct Metadata {
     pub method_name: String,
     pub transaction_time: Nat,
     pub stable_size: Nat,
+    pub memo: String,
 }
 
 
 impl Metadata {
-    pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,cycle:Nat,method_name:&str) -> Self {
+    pub fn new(canister:&Principal,caller: &Principal, transaction_time: Nat, stable_size: Nat,cycle:Nat,method_name:&str,memo:&str) -> Self {
         Self {
             canister:canister.clone(),
             caller: caller.clone(),
@@ -22,6 +23,7 @@ impl Metadata {
             method_name: method_name.to_string(),
             transaction_time: transaction_time,
             stable_size: stable_size,
+            memo:memo.to_string()
         }
     }
 }

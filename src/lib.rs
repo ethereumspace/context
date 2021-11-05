@@ -17,7 +17,7 @@ pub async fn emit(remarks: &str) -> CallResult<()>{
     let event_time = time();
     let cycle = canister_balance();
     let stable_size = stable::stable_size();
-    let new_metadata = Metadata::new(&canister_id,&caller_id, event_time.into(), stable_size.into(),cycle.into(),"none");
+    let new_metadata = Metadata::new(&canister_id,&caller_id, event_time.into(), stable_size.into(),cycle.into(),"none","none");
     match Principal::from_text(EVENTCANISTER) {
         Ok(event_canister_id) => {
             print(&event_canister_id.to_text());
@@ -32,15 +32,16 @@ pub async fn emit(remarks: &str) -> CallResult<()>{
 
 #[macro_export]
 macro_rules! emit{
-($method_name:expr,$argus:expr) =>{
+($method_name:expr,$memo:expr) =>{
     let method = $method_name.to_string();
+    let memo = &memo.to_string();
     println!("method{}",&method);
     let canister_id = id();
     let caller_id = caller();
     let event_time = time();
     let cycle = canister_balance();
     let stable_size = stable::stable_size();
-    let new_metadata = Metadata::new(&canister_id,&caller_id, event_time.into(), stable_size.into(),cycle.into(),&method);
+    let new_metadata = Metadata::new(&canister_id,&caller_id, event_time.into(), stable_size.into(),cycle.into(),&method,memo);
 }
    
 }
