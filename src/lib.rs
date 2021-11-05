@@ -13,8 +13,8 @@ use ic_cdk::api::call::{ CallResult,RejectionCode};
 use event::EventTrait;
 use event_macro::Event;
 use ic_cdk::export::candid::Nat;
-extern crate event;
-extern crate event_macro;
+pub extern crate event;
+pub extern crate event_macro;
 
 pub async fn emit(event:impl EventTrait ) -> CallResult<()>{
     if event.method_name() == "" {
