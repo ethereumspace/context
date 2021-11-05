@@ -213,6 +213,8 @@ dependencies = [
 name = "context"
 version = "0.1.0"
 dependencies = [
+ "event",
+ "event_macro",
  "hyper 0.10.16",
  "ic-cdk",
  "ic-cdk-macros",
@@ -331,6 +333,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a74ea89a0a1b98f6332de42c95baff457ada66d1cb4030f9ff151b2041a1c746"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "event"
+version = "0.1.0"
+dependencies = [
+ "ic-cdk",
+]
+
+[[package]]
+name = "event_macro"
+version = "0.1.0"
+dependencies = [
+ "event",
+ "ic-cdk",
+ "ic-cdk-macros",
+ "quote",
+ "syn",
 ]
 
 [[package]]

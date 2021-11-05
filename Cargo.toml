@@ -16,3 +16,5 @@ serde = "1.0.111"
 hyper = "0.10.15"
 serde_bytes = "0.11"
 serde_json = "1.0.68"
+event_macro = {path = "./src/event_macro" }
+event = {path = "./src/event" }
